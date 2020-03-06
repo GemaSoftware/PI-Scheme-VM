@@ -6,6 +6,8 @@ Clone Link: https://github.com/GemaSoftware/PI-Scheme-VM.git
 ## In order to run this VM, you will need to install:
 
 - QEMU [Download](https://www.qemu.org/download/)
+- Brew if on Mac [Download](https://brew.sh/)
+- Gnu Sed if on Mac "Brew Download - brew install gnu-sed"
 
 ## If on Windows, I recommend also downloading the following packages to be able to run the script file instead of manually pasteing it in (Still working on script):
 
