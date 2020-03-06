@@ -20,8 +20,12 @@ First clone this repository to a folder of your choosing and then run the comman
 
 # Running VM Manually (without scripts)
 
-- Download the updated Raspbian image and save it as "1.img" in a folder of your choosing. Remember the path of the folder. It is needed later.
+- Download the updated Raspbian image and save it as "1.img" in the folder you cloned earlier. Remember the path of the folder. It is needed later.
+  - [Direct Download to Image - Google Drive](https://drive.google.com/a/uconn.edu/uc?id=1tdo7FqnPMrcZhabWKdydcmXToHjnW1BZ&export=download)
 
+- Open up the command prompt and cd into the folder you cloned. Once in that folder, paste the following command and press Enter:
+```
+qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -hda "./1.img" -net nic -net user,hostfwd=tcp::5022-:22 -dtb "./versatile-pb.dtb" -kernel "./qemukernel" -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -no-reboot 
 
 
 
