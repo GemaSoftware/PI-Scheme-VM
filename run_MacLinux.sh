@@ -16,10 +16,10 @@ then
 	-M versatilepb \
 	-cpu arm1176 \
 	-m 256 \
-	-hda ~/Desktop/1.img \
+	-hda "./1.img" \
 	-net nic -net user,hostfwd=tcp::5022-:22 \
 	-dtb "./versatile-pb.dtb" \
-	-kernel ~/Downloads/kernel-qemu-4.14.79-stretch \
+	-kernel "./qemukernel" \
 	-append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" \
 	-no-reboot 
 else
