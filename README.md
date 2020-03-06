@@ -14,7 +14,7 @@ Tools to run a VM consisting of Raspbian, SISC, and OpenJDK8
 First clone this repository to a folder of your choosing and then run the command:
 ```
 ./run_Maclinux.sh (Mac or Linux)
-./run_Windows.bat (Windows) Not Done
+./run_Windows.bat (Windows) IN PROGRESS
 ```
 
 
