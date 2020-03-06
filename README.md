@@ -9,6 +9,19 @@ Tools to run a VM consisting of Raspbian, SISC, and OpenJDK8
 
 - WGet for Windows [Download](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
+# Running VM via Scripts
+
+First clone this repository to a folder of your choosing and then run the command:
+```
+./run_Maclinux.sh (Mac or Linux)
+./run_Windows.bat (Windows) Not Done
+```
+
+
+# Running VM Manually (without scripts)
+
+- Download the updated Raspbian image and save it as "1.img" in a folder of your choosing. Remember the path of the folder. It is needed later.
+
 
 
 
