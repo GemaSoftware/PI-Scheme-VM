@@ -1,0 +1,41 @@
+<domain type='qemu'>
+  <name>rpiQEMU_NUM</name>
+  <memory unit='KiB'>262144</memory>
+  <currentMemory unit='KiB'>262144</currentMemory>
+  <os>
+    <type arch='armv7l' machine='versatilepb'>hvm</type>
+    <kernel>QEMU_PATH/qemukernel</kernel> <!--update path here-->
+    <cmdline>root=/dev/sda2</cmdline>
+    <dtb>QEMU_PATH/versatile-pb.dtb</dtb>                  <!--update path here-->
+    <boot dev='hd'/>
+  </os>
+  <cpu mode='custom' match='exact' check='none'>
+    <model fallback='forbid'>arm1176</model>
+  </cpu>
+  <devices>
+    <emulator>/usr/bin/qemu-system-arm</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='QEMU_PATH/QEMU_NUM.qcow2'/>                     <!--update path here-->
+      <backingStore/>
+      <target dev='sda' bus='scsi'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <controller type='pci' index='0' model='pci-root'/>
+    <interface type='bridge'>
+      <mac address='QEMU_MAC'/>
+      <source bridge='virbr1'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
+    </interface>
+    <graphics type='spice' autoport='yes'>
+      <listen type='address'/>
+      <image compression='off'/>
+      <gl enable='no' rendernode='/dev/dri/by-path/pci-0000:00:02.0-render'/>
+    </graphics>
+    <video>
+      <model type='virtio' heads='1' primary='yes'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
+    </video>
+  </devices>
+</domain>

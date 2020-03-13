@@ -1,0 +1,20 @@
+<network>
+<name>net0</name>
+<forward dev='QEMU_NET' mode='nat'>
+  <interface dev='QEMU_NET'/>
+</forward>
+<bridge name='virbr1' stp='on' delay='0'/>
+<mac address='52:54:00:c3:65:58'/>
+<domain name='net0'/>
+<dns>
+<host ip='QEMU_DNSHOSTNAME'>
+  <hostname>rpi1.local</hostname>
+</host>
+</dns>
+<ip address='192.168.100.1' netmask='255.255.255.0'>
+  <dhcp>
+    <range start='192.168.100.2' end='192.168.100.100'/>
+    <placeholder/>
+  </dhcp>
+</ip>
+</network>
