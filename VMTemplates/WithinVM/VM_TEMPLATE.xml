@@ -1,0 +1,54 @@
+<domain type='qemu'>
+  <name>rpiQEMU_NUM</name>
+  <memory unit='KiB'>262144</memory>
+  <currentMemory unit='KiB'>262144</currentMemory>
+  <vcpu placement='static'>1</vcpu>
+  <os>
+    <type arch='armv7l' machine='versatilepb'>hvm</type>
+    <kernel>VM_FOLDER/qemukernel</kernel>
+    <cmdline>root=/dev/sda2</cmdline>
+    <dtb>VM_FOLDER/versatile-pb.dtb</dtb>
+    <boot dev='hd'/>
+  </os>
+  <cpu mode='custom' match='exact' check='none'>
+    <model fallback='forbid'>arm1176</model>
+  </cpu>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <devices>
+    <emulator>/usr/bin/qemu-system-arm</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='VM_IMAGE_FOLDER/1.qcow2'/>
+      <target dev='sda' bus='scsi'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <controller type='pci' index='0' model='pci-root'/>
+    <controller type='scsi' index='0'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
+    </controller>
+    <interface type='bridge'>
+      <mac address='QEMU_MAC'/>
+      <source bridge='br1'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
+    </interface>
+    <interface type='network'>
+      <mac address='MACADDR1'/>
+      <source network='net1'/>
+      <model type='virtio'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
+    </interface>
+    <graphics type='spice' autoport='yes'>
+      <listen type='address'/>
+      <image compression='off'/>
+      <gl enable='no' rendernode='/dev/dri/by-path/pci-0000:00:02.0-render'/>
+    </graphics>
+    <video>
+      <model type='virtio' heads='1' primary='yes'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
+    </video>
+  </devices>
+</domain>

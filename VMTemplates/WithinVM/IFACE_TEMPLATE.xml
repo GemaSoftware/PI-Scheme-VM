@@ -1,0 +1,15 @@
+<interface type='bridge' name='br1'>
+  <start mode='onboot'/>
+  <protocol family='ipv4'>
+    <ip address='IFACE_CURRIP' prefix='24'/>
+  </protocol>
+  <protocol family='ipv6'>
+    <ip address='fe80::a00:27ff:fee7:c0a7' prefix='64'/>
+  </protocol>
+  <bridge>
+    <interface type='ethernet' name='IFACE_CURRIFACE'>
+      <link speed='1000' state='up'/>
+      <mac address='08:00:27:e7:c0:a7'/>
+    </interface>
+  </bridge>
+</interface>
